@@ -4,28 +4,39 @@
     justify-content: flex-start;
     border: 1px solid black;
 
+    &--1 {
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+    }
+
     .btn-group {
         display: flex;
+        flex-wrap: wrap;
+
+        &--number {
+            //**/
+        }
 
         .btn {
-            width: 100px;
-            height: 100px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            margin: 10px 10px;
+            margin: 0px 15px 15px 0;
             color: #ffffff;
             font-size: 1.8rem;
             box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.8);
 
             &-special {
                 background-color: #1f60b0;
-                margin-top: 0;
-                &:first-child {
-                    margin-left: 0;
-                }
             }
 
             &-number {
                 background-color: #103b78;
+                &--9 {
+                    border-radius: 30px;
+                    width: 135px;
+                }
             }
 
             &-operator {
