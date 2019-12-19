@@ -1,0 +1,28 @@
+.btn-group-wrapper {
+    width: 486px;
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid black;
+
+    .btn-group {
+        display: flex;
+
+        .btn {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 10px 10px;
+            color: #ffffff;
+            font-size: 1.8rem;
+            box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.8);
+
+            &.special-btn {
+                background-color: #1f60b0;
+                margin-top: 0;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
