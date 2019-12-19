@@ -16,12 +16,20 @@
             font-size: 1.8rem;
             box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.8);
 
-            &.special-btn {
+            &-special {
                 background-color: #1f60b0;
                 margin-top: 0;
                 &:first-child {
                     margin-left: 0;
                 }
+            }
+
+            &-number {
+                background-color: #103b78;
+            }
+
+            &-operator {
+                background-color: #4cb5e5;
             }
         }
     }
