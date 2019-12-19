@@ -4,10 +4,17 @@
     max-width: 550px;
     border-radius: 15px;
     border: 2px solid grey;
-    padding-bottom: 25px;
+    padding: 25px 0;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 .display {
-    margin-top: 25px;
+    margin: 25px 0;
     height: 100px;
     width: 450px;
     border-radius: 50px;
@@ -20,3 +27,10 @@
     padding-right: 8%;
     font-size: 5.0rem;
   }
+
+.logo-container {
+    margin-left: 35px;
+    img {
+        width: 20%;
+    }
+}

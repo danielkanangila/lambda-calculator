@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.scss";
 import Display from "./components/DisplayComponents/Display"
-import Specials from "./components/ButtonComponents/SpecialButtons/Specials";
+import ButtonGroup from "./components/ButtonComponents/ButtonGroup";
 // STEP 4 - import the button and display components
 // Don't forget to import any extra css/scss files you build into the correct component
 
@@ -22,7 +22,7 @@ function App() {
       <div className="App">
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
         <Display result={result}/>
-        <Specials />
+        <ButtonGroup />
       </div>
     </div>
   );
