@@ -6,15 +6,15 @@ import Operators from "./OperatorButtons/Operators";
 import "./ButtonComponents.scss";
 
 const ButtonGroup = props => {
-
+    const { clickEventHandler } = props
     return (
         <div className="btn-group-wrapper">
             <div  className="btn-group-wrapper--1">
-                <Specials />
-                <Numbers />
+                <Specials onspecialclick={clickEventHandler} />
+                <Numbers onnumberclick={clickEventHandler} />
             </div>
             <div className="btn-group-wrapper--2">
-                <Operators />
+                <Operators onoperatorclick={clickEventHandler} />
             </div>
         </div>
     )

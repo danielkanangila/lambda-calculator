@@ -8,9 +8,10 @@ import { numbers } from '../../../data'
 */
 //Import your array data to from the provided data file
 
-const Numbers = () => {
+const Numbers = (props) => {
   // STEP 2 - add the imported data to state
-  const [ _numbers ] = useState(numbers)
+  const [ _numbers ] = useState(numbers);
+  const { onnumberclick } = props
   return (
     <div className="btn-group btn-group--number">
       {/* STEP 3 - Use .map() to iterate over your array data and return a button
@@ -18,6 +19,7 @@ const Numbers = () => {
        it any props needed by the child component*/}
       { _numbers.map((number, index) => 
         <NumberButton 
+          onnumberclick={onnumberclick}
           key={index} 
           index={index} 
           btnContent={number} />

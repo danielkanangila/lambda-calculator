@@ -1,9 +1,9 @@
 import React from "react";
 
 const OperatorButton = (props) => {
-  const { operator } = props;
+  const { operator , onoperatorclick } = props;
   return (
-    <button className="btn btn-operator">
+    <button onClick={onoperatorclick} className="btn btn-operator">
       {operator}
     </button>
   );

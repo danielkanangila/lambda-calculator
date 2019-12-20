@@ -1,10 +1,12 @@
 import React from "react";
 
 const NumberButton = (props) => {
-  const { btnContent, index } = props
+  const { btnContent, index, onnumberclick } = props
 
   return (
-    <button className={`btn btn-number btn-number--${index}`}>
+    <button
+      onClick={onnumberclick}
+     className={`btn btn-number btn-number--${index}`}>
       { btnContent }
     </button>
   );
