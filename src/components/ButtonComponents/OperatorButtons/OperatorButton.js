@@ -3,9 +3,9 @@ import React from "react";
 const OperatorButton = (props) => {
   const { operator } = props;
   return (
-    <div className="btn btn-operator">
+    <button className="btn btn-operator">
       {operator}
-    </div>
+    </button>
   );
 };
 

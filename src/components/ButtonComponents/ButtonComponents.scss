@@ -2,7 +2,6 @@
     width: 286px;
     display: flex;
     justify-content: flex-start;
-    border: 1px solid black; 
 
     &--1 {
         display: flex;
@@ -32,13 +31,20 @@
             font-size: 1.8rem;
             box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.8);
             text-align: center;
+            transition: .3s;
 
             &-special {
                 background-color: #1f60b0;
+                &:hover {
+                    background-color: darken(#1f60b0, 10%);
+                }
             }
 
             &-number {
                 background-color: #103b78;
+                &:hover {
+                    background-color: darken(#103b78, 10%);
+                }
                 &--9 {
                     border-radius: 30px;
                     width: 135px;
@@ -48,9 +54,9 @@
             &-operator {
                 margin-right: 0;
                 background-color: #4cb5e5;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                &:hover {
+                    background-color: darken(#4cb5e5, 10%);
+                }
             }
         }
     }

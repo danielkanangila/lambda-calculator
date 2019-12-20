@@ -1,7 +1,7 @@
 .container {
     background-color: #c00025;
     width: 100%;
-    max-width: 550px;
+    max-width: 350px;
     border-radius: 15px;
     border: 2px solid grey;
     padding: 25px 0;
@@ -15,8 +15,8 @@
 }
 .display {
     margin: 25px 0;
-    height: 100px;
-    width: 450px;
+    height: 65px;
+    width: 268px;
     border-radius: 50px;
     color: white;
     background-color: #322c2d;
@@ -25,12 +25,12 @@
     justify-content: flex-end;
     align-items: flex-end;
     padding-right: 8%;
-    font-size: 5.0rem;
+    font-size: 3.5rem;
   }
 
 .logo-container {
     margin-left: 35px;
     img {
-        width: 20%;
+        width: 30%;
     }
 }
