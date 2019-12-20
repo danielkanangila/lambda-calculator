@@ -7,12 +7,13 @@ import ButtonGroup from "./components/ButtonComponents/ButtonGroup";
 
 // Logo has already been provided for you. Do the same for the remaining components
 import Logo from "./components/DisplayComponents/Logo";
-import { numbers } from "./data";
+import { numbers, operators } from "./data";
 
 function App() {
-  const [ result, setResult ] = useState(0);
-  const [ x, setX ] = useState(0);
-  const [ y, setY ] = useState(0);
+  const [ result, setResult ] = useState('0');
+  const [operation, setOperation] = useState('');
+  const [ x, setX ] = useState(null);
+  const [ y, setY ] = useState(null);
   const [ operator, setOperator ] = useState(null);
   // STEP 5 - After you get the components displaying using the provided data file, write your state hooks here.
   // Once the state hooks are in place write some functions to hold data in state and update that data depending on what it needs to be doing
@@ -21,21 +22,40 @@ function App() {
   // Don't forget to pass the functions (and any additional data needed) to the components as props
 
   const calculator = e => {
-    const actionContent = e.target.textContent;
+    const btnContent = e.target.textContent;
 
     // Clear display by and reset state
-    if (actionContent === 'C') {
-      setResult(0); setX(0); setY(0); setOperator(null)
+    if (btnContent === 'C') {
+      reset();
     }
 
-    if (numbers.includes(actionContent) && 
-      y === 0 && operator === null) {
+    if (numbers.includes(btnContent) && 
+      y === null && operator === null) {
+      setDisplay(btnContent);
+    }
 
-      console.log(actionContent)
-      setX(x => x = `${x}${actionContent}`);
-      setResult(result => result = Number(x));
+    if (operators.some(operator => operator.value === btnContent) && btnContent !== '=') {
+       if (!x && !operator) {
+         setOperator(operator => operator = btnContent)
+         setX(x => x = Number(result))
+         setOperation(operation => operation += `${result} ${btnContent}`)
+         setResult('0');
+       }
     }
     
+  }
+
+  const reset = () => {
+    setResult('0'); setX(null); setY(null);
+    setOperator(null); setOperation('')
+  }
+
+  const setDisplay = input => {
+    if (result.length < 10 ) {
+      setResult(result => 
+        result = (Number(result) === 0) ? input :`${result}${input}`
+      );
+    } 
   }
 
   return (
@@ -43,7 +63,7 @@ function App() {
       <Logo />
       <div className="App">
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
-        <Display result={result}/>
+        <Display operation={operation} result={result}/>
         <ButtonGroup clickEventHandler={calculator} />
       </div>
     </div>
