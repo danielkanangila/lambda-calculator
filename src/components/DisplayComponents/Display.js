@@ -1,11 +1,11 @@
 import React from "react";
 
 const Display = (props) => {
-  const { result, operation } =  props;
+  const { equation, result } =  props;
   return (
     <div className="display">
       { result }
-      <span className="operation">{ operation }</span>
+      <span className="operation">{ equation }</span>
     </div>
   )
 };

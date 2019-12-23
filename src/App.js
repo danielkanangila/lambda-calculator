@@ -10,10 +10,8 @@ import Logo from "./components/DisplayComponents/Logo";
 import { numbers, operators } from "./data";
 
 function App() {
-  const [ result, setResult ] = useState('0');
-  const [operation, setOperation] = useState('');
-  const [ x, setX ] = useState(null);
-  const [ y, setY ] = useState(null);
+  const [ result, setResult ] = useState(0);
+  const [ equation, setEquation] = useState('');
   const [ operator, setOperator ] = useState(null);
   // STEP 5 - After you get the components displaying using the provided data file, write your state hooks here.
   // Once the state hooks are in place write some functions to hold data in state and update that data depending on what it needs to be doing
@@ -22,48 +20,77 @@ function App() {
   // Don't forget to pass the functions (and any additional data needed) to the components as props
 
   const calculator = e => {
-    const btnContent = e.target.textContent;
+    const button = e.target.textContent;
 
     // Clear display by and reset state
-    if (btnContent === 'C') {
-      reset();
-    }
+      if (button === 'C') {
+        clear();
+      }
 
-    if (numbers.includes(btnContent) && 
-      y === null && operator === null) {
-      setDisplay(btnContent);
-    }
+      if (numbers.includes(button) || operators.some(operator => operator.value === button)) {
+        if (button === '=') {
 
-    if (operators.some(operator => operator.value === btnContent) && btnContent !== '=') {
-       if (!x && !operator) {
-         setOperator(operator => operator = btnContent)
-         setX(x => x = Number(result))
-         setOperation(operation => operation += `${result} ${btnContent}`)
-         setResult('0');
-       }
-    }
-    
+          const res = _do(`${equation}${result}`);
+          setResult(res);
+          setEquation('') ;
+          setOperator(null)
+        } else {
+           //if (hasResole) { setResult(result => result = button); } 
+          if ((result === 0 && button === '-')) { 
+            parseEqIfResultExists();
+            setResult(result => result = button) 
+          }
+          else if ((button >= 0 && button <= 9) || button === '.') { 
+            console.log(button)
+            parseEqIfResultExists();
+            setResult(result => 
+              result = isNaN(button) ? `${result}${button}` : Number(`${result}${button}`)
+            ) 
+          }
+          else {
+              setOperator(operator => operator = button);
+              const eq = equation + `${result} ${button} `;
+              const end = eq.length - 2
+              const rs = (isNaN(eq.slice(0, end))) ? _do(eq.slice(0, end)) : null;
+
+              if (rs) {
+                setEquation(equation => equation = `${eq.slice(0, end)} = ${rs}`);
+              } else {
+                setEquation(equation => equation = eq);
+              }
+              setResult(0)
+          }
+        }
+      }
   }
 
-  const reset = () => {
-    setResult('0'); setX(null); setY(null);
-    setOperator(null); setOperation('')
+  const parseEqIfResultExists = () => {
+    if (equation.indexOf('=') !== -1) {
+      const end = equation.length - 4
+      setEquation(equation => 
+        equation = `${equation.slice(0, end)}${operator}` 
+      )
+    }
   }
 
-  const setDisplay = input => {
-    if (result.length < 10 ) {
-      setResult(result => 
-        result = (Number(result) === 0) ? input :`${result}${input}`
-      );
-    } 
+  const _do = equation => {
+    try {
+      return eval(equation)
+    } catch {
+      return 'ERROR';
+    }
   }
+
+ const clear = () => {
+   setResult(0); setEquation(''); setOperator(null)
+ }
 
   return (
     <div className="container">
       <Logo />
       <div className="App">
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
-        <Display operation={operation} result={result}/>
+        <Display equation={equation} result={result}/>
         <ButtonGroup clickEventHandler={calculator} />
       </div>
     </div>
