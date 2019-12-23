@@ -36,6 +36,10 @@
         bottom: 1px;
         font-size: 0.7rem;
         color: #cccccc;
+
+        &.error {
+            color: red;
+        }
     }
   }
 
@@ -44,4 +48,8 @@
     img {
         width: 30%;
     }
+}
+
+.error {
+    color: red;
 }
