@@ -1,0 +1,55 @@
+.container {
+    background-color: #c00025;
+    width: 100%;
+    max-width: 350px;
+    border-radius: 15px;
+    border: 2px solid grey;
+    padding: 25px 0 10px 0;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.display {
+    margin: 25px 0;
+    height: 60px;
+    width: 268px;
+    border-radius: 50px;
+    color: white;
+    background-color: #322c2d;
+    box-shadow: 1px 1px #322c2d;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 10px 10px 0px;
+    font-size: 3rem;
+    position: relative;
+
+    .operation {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        bottom: 1px;
+        font-size: 0.7rem;
+        color: #cccccc;
+
+        &.error {
+            color: red;
+        }
+    }
+  }
+
+.logo-container {
+    margin-left: 35px;
+    img {
+        width: 30%;
+    }
+}
+
+.error {
+    color: red;
+}
